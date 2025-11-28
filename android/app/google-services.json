@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "92476500762",
+    "project_id": "resume-matching-jd",
+    "storage_bucket": "resume-matching-jd.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:92476500762:android:5a5341e0546b28fda19aa3",
+        "android_client_info": {
+          "package_name": "com.example.resume_matching_jd"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAog98c2k1sz6rLWSeF19I0H0rqbBGgIn8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
