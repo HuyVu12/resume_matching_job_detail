@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:resume_matching_jd/view_models/welcome/welcome_view_model.dart';
 import 'package:resume_matching_jd/views/welcome/components/welcome_page_component.dart';
 
 class WelcomeView extends StatelessWidget {
@@ -6,6 +8,7 @@ class WelcomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final vm = Provider.of<WelcomeViewModel>(context);
     return Scaffold(
       body: Center(
         child: Padding(
@@ -51,7 +54,9 @@ class WelcomeView extends StatelessWidget {
                       ],
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        vm.onClickTraiNghiem(context);
+                      },
                       child: Text("Trải nghiêm ngay không cần đăng nhập"),
                     ),
                   ],
