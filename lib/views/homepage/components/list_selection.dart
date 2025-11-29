@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:resume_matching_jd/components/my_item_lottie_title.dart';
 import 'package:resume_matching_jd/views/homepage/components/list_selection_item.dart';
 
 class ListSelection extends StatelessWidget {
