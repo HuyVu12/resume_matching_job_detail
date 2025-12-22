@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:resume_matching_jd/components/my_item_lottie_title.dart';
 import 'package:resume_matching_jd/views/homepage/components/list_selection_item.dart';
 
 class ListSelection extends StatelessWidget {
@@ -13,28 +12,28 @@ class ListSelection extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         children: [
           ListSelectionItem(
-            iconPath: 'assets/lotties/briefcase_icon.json',
+            iconPath: 'assets/lotties/job.json',
             label: 'Việc làm',
             onTap: () {},
           ),
           ListSelectionItem(
-            iconPath: 'assets/lotties/company_icon.json',
+            iconPath: 'assets/lotties/company.json',
             label: 'Công ty',
             onTap: () {},
           ),
           ListSelectionItem(
-            iconPath: 'assets/lotties/document_color_icon.json',
+            iconPath: 'assets/lotties/document_icon.json',
             label: 'Tạo CV',
             onTap: () {},
           ),
           ListSelectionItem(
-            iconPath: 'assets/lotties/blog_icon.json',
-            label: 'Tạo CV',
+            iconPath: 'assets/lotties/mark.json',
+            label: 'Blog',
             onTap: () {},
           ),
           ListSelectionItem(
-            iconPath: 'assets/lotties/tool_icon2.json',
-            label: 'Tạo CV',
+            iconPath: 'assets/lotties/tool.json',
+            label: 'Công cụ',
             onTap: () {},
           ),
         ],
