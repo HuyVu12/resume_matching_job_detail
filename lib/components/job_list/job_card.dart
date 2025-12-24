@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:resume_matching_jd/models/job_model.dart';
-import 'package:resume_matching_jd/views/job_detail/job_detail_view.dart';
+import 'package:resume_matching_jd/views/job_detail_view.dart';
 
 class JobCard extends StatelessWidget {
   final JobModel job_detail;

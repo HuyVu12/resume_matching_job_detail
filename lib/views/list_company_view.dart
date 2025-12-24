@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:resume_matching_jd/components/job_list/job_list.dart';
+import 'package:resume_matching_jd/cores/my_router.dart';
 import 'package:resume_matching_jd/models/company_model.dart';
 import 'package:resume_matching_jd/view_models/list_job_view_model.dart';
 import 'package:resume_matching_jd/view_models/save_view_model.dart';
@@ -41,13 +42,7 @@ class CompanyCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(
-        //     builder: (context) =>
-        //         CompanyDetailView(company_detail: company_detail),
-        //   ),
-        // );
+        MyRouter().navigateToCompanyDetailView(context, company_detail);
       },
       child: Container(
         margin: const EdgeInsets.only(bottom: 12),
@@ -80,8 +75,6 @@ class CompanyCard extends StatelessWidget {
                   ? Icon(Icons.business, color: Colors.grey.shade400)
                   : null,
             ),
-
-            // Nội dung
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

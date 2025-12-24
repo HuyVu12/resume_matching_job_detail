@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:resume_matching_jd/components/job_list/job_list.dart';
 import 'package:resume_matching_jd/view_models/list_job_view_model.dart';
-import 'package:resume_matching_jd/view_models/save_view_model.dart';
+// import 'package:resume_matching_jd/view_models/save_view_model.dart';
 
 class ListJobView extends StatelessWidget {
   const ListJobView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final svm = Provider.of<SaveViewModel>(context);
+    // final svm = Provider.of<SaveViewModel>(context);
     final vm = Provider.of<ListJobViewModel>(context);
     TextEditingController searchController = TextEditingController(
       text: vm.search_keyword,

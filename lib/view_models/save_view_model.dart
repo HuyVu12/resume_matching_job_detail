@@ -24,4 +24,11 @@ class SaveViewModel extends ChangeNotifier {
   CompanyModel get_company(int index) {
     return _Companies[index - 1];
   }
+
+  List<JobModel> get_all_jobs_by_company_name(String company_name) {
+    return _Jobs.where(
+      (job) =>
+          job.company_name.toLowerCase().contains(company_name.toLowerCase()),
+    ).toList();
+  }
 }

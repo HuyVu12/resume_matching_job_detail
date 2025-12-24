@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:resume_matching_jd/cores/my_router.dart';
 import 'package:resume_matching_jd/view_models/welcome/welcome_view_model.dart';
 import 'package:resume_matching_jd/views/welcome/components/welcome_page_component.dart';
 
@@ -24,7 +25,9 @@ class WelcomeView extends StatelessWidget {
                       children: [
                         Expanded(
                           child: FilledButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              MyRouter().navigateToLoginView(context);
+                            },
                             style: ButtonStyle(
                               padding: WidgetStateProperty.all(
                                 EdgeInsets.symmetric(vertical: 15),
@@ -39,7 +42,9 @@ class WelcomeView extends StatelessWidget {
                         SizedBox(width: 10),
                         Expanded(
                           child: OutlinedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              MyRouter().navigateToRegisterView(context);
+                            },
                             style: ButtonStyle(
                               padding: WidgetStateProperty.all(
                                 EdgeInsets.symmetric(vertical: 15),
