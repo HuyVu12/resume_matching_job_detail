@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
+import 'package:resume_matching_jd/models/job.dart';
+import 'package:resume_matching_jd/view_models/home_view_model.dart';
+import 'package:resume_matching_jd/view_models/job_detail_view_model.dart';
+import 'package:resume_matching_jd/view_models/list_job_view_model.dart';
+import 'package:resume_matching_jd/view_models/save_view_model.dart';
 import 'package:resume_matching_jd/view_models/welcome/welcome_view_model.dart';
+import 'package:resume_matching_jd/views/job_detail/job_detail_view.dart';
 import 'package:resume_matching_jd/views/welcome/welcome_view.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -13,7 +19,21 @@ void main() async {
     url: dotenv.env['SUPABASE_URL']!,
     anonKey: dotenv.env['SUPABASE_ANON_KEY']!,
   );
-  runApp(const MainApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => WelcomeViewModel()),
+        ChangeNotifierProvider(create: (context) => HomeViewModel()),
+        ChangeNotifierProvider(create: (context) => JobDetailViewModel()),
+        ChangeNotifierProvider(create: (context) => ListJobViewModel()),
+        ChangeNotifierProvider(
+          create: (context) => SaveViewModel(),
+          lazy: false,
+        ),
+      ],
+      child: const MainApp(),
+    ),
+  );
 }
 
 class MainApp extends StatelessWidget {
@@ -28,10 +48,7 @@ class MainApp extends StatelessWidget {
         brightness: Brightness.light,
         colorSchemeSeed: Colors.blue,
       ),
-      home: ChangeNotifierProvider(
-        create: (context) => WelcomeViewModel(),
-        child: WelcomeView(),
-      ),
+      home: WelcomeView(),
     );
   }
 }

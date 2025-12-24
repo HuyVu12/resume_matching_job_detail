@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:resume_matching_jd/cores/my_router.dart';
 import 'package:resume_matching_jd/views/homepage/components/list_selection_item.dart';
 
 class ListSelection extends StatelessWidget {
@@ -14,7 +15,9 @@ class ListSelection extends StatelessWidget {
           ListSelectionItem(
             iconPath: 'assets/lotties/job.json',
             label: 'Việc làm',
-            onTap: () {},
+            onTap: () {
+              MyRouter().navigateToJobList(context);
+            },
           ),
           ListSelectionItem(
             iconPath: 'assets/lotties/company.json',

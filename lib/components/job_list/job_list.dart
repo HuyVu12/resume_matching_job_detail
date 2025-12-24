@@ -10,20 +10,7 @@ class JobList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: jobs
-          .map(
-            (job) => JobCard(
-              title: job.title,
-              company: job.company_name,
-              salary: job.salaryMin != null && job.salaryMax != null
-                  ? "${job.salaryMin! / 1000000} - ${job.salaryMax! / 1000000} triệu VND"
-                  : "Thương lượng",
-              location: job.location ?? "Không xác định",
-              logoUrl: job.logoUrl ?? "",
-              jobType: job.job_type,
-            ),
-          )
-          .toList(),
+      children: jobs.map((job) => JobCard(job_detail: job)).toList(),
     );
   }
 }
