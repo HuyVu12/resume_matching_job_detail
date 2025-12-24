@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:resume_matching_jd/cores/my_router.dart';
+import 'package:resume_matching_jd/services/auth_service.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -15,8 +16,29 @@ class _LoginViewState extends State<LoginView> {
   bool _isObscure = true;
 
   void _handleLogin() {
-    print("Email: ${_emailController.text}");
-    print("Password: ${_passwordController.text}");
+    AuthService()
+        .signIn(
+          email: _emailController.text.trim(),
+          password: _passwordController.text.trim(),
+        )
+        .then((_) {
+          MyRouter().navigateToHome(context);
+        })
+        .catchError((error) {
+          showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+              title: const Text('Lỗi đăng nhập'),
+              content: Text(error.toString()),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: const Text('OK'),
+                ),
+              ],
+            ),
+          );
+        });
   }
 
   @override
@@ -92,8 +114,8 @@ class _LoginViewState extends State<LoginView> {
                             children: [
                               _buildTextField(
                                 controller: _emailController,
-                                hint: "Tên đăng nhập",
-                                icon: Icons.account_circle_outlined,
+                                hint: "Địa chỉ Email",
+                                icon: Icons.email_outlined,
                                 inputType: TextInputType.emailAddress,
                               ),
                               Container(

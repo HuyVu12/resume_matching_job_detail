@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:resume_matching_jd/components/bottom_app_bar/my_bottom_app_bar.dart';
 import 'package:resume_matching_jd/components/job_list/job_list.dart';
 import 'package:resume_matching_jd/cores/my_router.dart';
+import 'package:resume_matching_jd/cores/utils.dart';
+import 'package:resume_matching_jd/services/auth_service.dart';
 import 'package:resume_matching_jd/view_models/save_view_model.dart';
 import 'package:resume_matching_jd/views/homepage/components/list_selection.dart';
 
@@ -14,6 +16,21 @@ class HomepageView extends StatefulWidget {
 }
 
 class _HomepageViewState extends State<HomepageView> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        showMessage(
+          context,
+          current_user.username == null
+              ? "Chào mừng bạn đến với ứng dụng!"
+              : "Chào mừng ${current_user.username} quay lại!",
+        );
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final svm = Provider.of<SaveViewModel>(context);

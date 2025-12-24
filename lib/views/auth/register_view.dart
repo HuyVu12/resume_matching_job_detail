@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:resume_matching_jd/cores/my_router.dart';
+import 'package:resume_matching_jd/cores/utils.dart';
+import 'package:resume_matching_jd/services/auth_service.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
@@ -20,10 +22,23 @@ class _RegisterViewState extends State<RegisterView> {
       'candidate'; // Mặc định là ứng viên (candidate hoặc recruiter)
 
   void _handleRegister() {
-    print("Username: ${_usernameController.text}");
-    print("Email: ${_emailController.text}");
-    print("Phone: ${_phoneController.text}");
-    print("Role: $_selectedRole");
+    AuthService()
+        .signUp(
+          email: _emailController.text.trim(),
+          password: _passwordController.text.trim(),
+          username: _usernameController.text.trim(),
+          phone: _phoneController.text.trim(),
+          role: _selectedRole,
+        )
+        .then((_) {
+          showMessage(context, "Đăng ký thành công! Vui lòng đăng nhập.");
+          MyRouter().navigateToLoginView(context);
+        })
+        .catchError((error) {
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text('Lỗi đăng ký: $error')));
+        });
   }
 
   @override
@@ -130,8 +145,8 @@ class _RegisterViewState extends State<RegisterView> {
                                 icon: Icons.person_outline,
                               ),
                               _buildTextField(
-                                controller: _fullnameController,
-                                hint: "Tên đăng nhập",
+                                controller: _usernameController,
+                                hint: "Tên tài khoản",
                                 icon: Icons.account_circle_outlined,
                               ),
                               _buildDivider(),
@@ -144,7 +159,7 @@ class _RegisterViewState extends State<RegisterView> {
                               _buildDivider(),
                               _buildTextField(
                                 controller: _emailController,
-                                hint: "Email",
+                                hint: "Địa chỉ Email",
                                 icon: Icons.email_outlined,
                                 inputType: TextInputType.emailAddress,
                               ),

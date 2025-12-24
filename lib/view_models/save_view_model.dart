@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:resume_matching_jd/models/company_model.dart';
 import 'package:resume_matching_jd/models/job.dart';
 import 'package:resume_matching_jd/models/job_model.dart';
+import 'package:resume_matching_jd/models/user_model.dart';
 import 'package:resume_matching_jd/services/company_service.dart';
 import 'package:resume_matching_jd/services/job_service.dart';
 
@@ -32,3 +33,5 @@ class SaveViewModel extends ChangeNotifier {
     ).toList();
   }
 }
+
+UserModel current_user = UserModel();

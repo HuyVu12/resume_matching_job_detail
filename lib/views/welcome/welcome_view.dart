@@ -10,6 +10,7 @@ class WelcomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final vm = Provider.of<WelcomeViewModel>(context);
+
     return Scaffold(
       body: Center(
         child: Padding(
