@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:resume_matching_jd/cores/my_router.dart';
-import 'package:resume_matching_jd/view_models/welcome/welcome_view_model.dart';
+import 'package:resume_matching_jd/view_models/welcome_view_model.dart';
 import 'package:resume_matching_jd/views/welcome/components/welcome_page_component.dart';
 
 class WelcomeView extends StatelessWidget {

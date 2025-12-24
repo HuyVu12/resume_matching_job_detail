@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
 import 'package:resume_matching_jd/models/job.dart';
+import 'package:resume_matching_jd/view_models/JDAI_view_model.dart';
 import 'package:resume_matching_jd/view_models/home_view_model.dart';
 import 'package:resume_matching_jd/view_models/job_detail_view_model.dart';
 import 'package:resume_matching_jd/view_models/list_job_view_model.dart';
 import 'package:resume_matching_jd/view_models/save_view_model.dart';
-import 'package:resume_matching_jd/view_models/welcome/welcome_view_model.dart';
+import 'package:resume_matching_jd/view_models/welcome_view_model.dart';
 import 'package:resume_matching_jd/views/job_detail_view.dart';
 import 'package:resume_matching_jd/views/welcome/welcome_view.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -26,6 +27,8 @@ void main() async {
         ChangeNotifierProvider(create: (context) => HomeViewModel()),
         ChangeNotifierProvider(create: (context) => JobDetailViewModel()),
         ChangeNotifierProvider(create: (context) => ListJobViewModel()),
+        ChangeNotifierProvider(create: (context) => JobDetailViewModel()),
+        ChangeNotifierProvider(create: (context) => JDAIViewModel()),
         ChangeNotifierProvider(
           create: (context) => SaveViewModel(),
           lazy: false,

@@ -3,7 +3,6 @@ import 'package:resume_matching_jd/models/company_model.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:resume_matching_jd/models/job_model.dart';
 import 'package:resume_matching_jd/view_models/job_detail_view_model.dart';
 import 'package:resume_matching_jd/view_models/save_view_model.dart';
 
