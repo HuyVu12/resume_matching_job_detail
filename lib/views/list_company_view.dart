@@ -1,22 +1,53 @@
 import 'package:flutter/material.dart';
-import 'package:resume_matching_jd/models/job_model.dart';
-import 'package:resume_matching_jd/views/job_detail/job_detail_view.dart';
+import 'package:provider/provider.dart';
+import 'package:resume_matching_jd/components/job_list/job_list.dart';
+import 'package:resume_matching_jd/models/company_model.dart';
+import 'package:resume_matching_jd/view_models/list_job_view_model.dart';
+import 'package:resume_matching_jd/view_models/save_view_model.dart';
 
-class JobCard extends StatelessWidget {
-  final JobModel job_detail;
+class ListCompanyView extends StatelessWidget {
+  const ListCompanyView({super.key});
 
-  const JobCard({super.key, required this.job_detail});
+  @override
+  Widget build(BuildContext context) {
+    final svm = Provider.of<SaveViewModel>(context);
+    final vm = Provider.of<ListJobViewModel>(context);
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+        child: CustomScrollView(
+          slivers: [
+            SliverAppBar(title: Text("Danh sách công ty")),
+            SliverToBoxAdapter(
+              child: Column(
+                children: svm.Companies.map(
+                  (company) => CompanyCard(company_detail: company),
+                ).toList(),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class CompanyCard extends StatelessWidget {
+  final CompanyModel company_detail;
+
+  const CompanyCard({super.key, required this.company_detail});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => JobDetailView(job_detail: job_detail),
-          ),
-        );
+        // Navigator.push(
+        //   context,
+        //   MaterialPageRoute(
+        //     builder: (context) =>
+        //         CompanyDetailView(company_detail: company_detail),
+        //   ),
+        // );
       },
       child: Container(
         margin: const EdgeInsets.only(bottom: 12),
@@ -34,16 +65,18 @@ class JobCard extends StatelessWidget {
               decoration: BoxDecoration(
                 color: const Color.fromARGB(255, 255, 255, 255),
                 borderRadius: BorderRadius.circular(8),
-                image: job_detail.logoUrl == null
+                image: company_detail.logo_url == null
                     ? null
-                    : job_detail.logoUrl!.isNotEmpty
+                    : company_detail.logo_url!.isNotEmpty
                     ? DecorationImage(
-                        image: NetworkImage(job_detail.logoUrl!),
+                        image: NetworkImage(company_detail.logo_url!),
                         fit: BoxFit.contain,
                       )
                     : null,
               ),
-              child: job_detail.logoUrl == null || job_detail.logoUrl!.isEmpty
+              child:
+                  company_detail.logo_url == null ||
+                      company_detail.logo_url!.isEmpty
                   ? Icon(Icons.business, color: Colors.grey.shade400)
                   : null,
             ),
@@ -54,7 +87,7 @@ class JobCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    job_detail.title,
+                    company_detail.name,
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16,
@@ -62,7 +95,7 @@ class JobCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 2),
                   Text(
-                    job_detail.company_name,
+                    company_detail.description,
                     style: TextStyle(color: Colors.grey.shade600, fontSize: 13),
                   ),
                   const SizedBox(height: 8),
@@ -71,16 +104,8 @@ class JobCard extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: [
-                        _tag(
-                          job_detail.salaryMin != null &&
-                                  job_detail.salaryMax != null
-                              ? "${job_detail.salaryMin! / 1000000} - ${job_detail.salaryMax! / 1000000} triệu VND"
-                              : "Thương lượng",
-                        ),
                         const SizedBox(width: 6),
-                        _tag(job_detail.location ?? "Không xác định"),
-                        const SizedBox(width: 6),
-                        _tag(job_detail.job_type ?? "Không xác định"),
+                        _tag(company_detail.address ?? "Không xác định"),
                       ],
                     ),
                   ),

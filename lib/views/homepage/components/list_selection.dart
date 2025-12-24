@@ -22,7 +22,9 @@ class ListSelection extends StatelessWidget {
           ListSelectionItem(
             iconPath: 'assets/lotties/company.json',
             label: 'Công ty',
-            onTap: () {},
+            onTap: () {
+              MyRouter().navigateToCompanyList(context);
+            },
           ),
           ListSelectionItem(
             iconPath: 'assets/lotties/document_icon.json',
