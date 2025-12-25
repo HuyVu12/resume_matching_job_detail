@@ -3,11 +3,13 @@ import 'package:resume_matching_jd/models/company_model.dart';
 import 'package:resume_matching_jd/views/account_view.dart';
 import 'package:resume_matching_jd/views/auth/login_view.dart';
 import 'package:resume_matching_jd/views/auth/register_view.dart';
+import 'package:resume_matching_jd/views/common/web_view_screen.dart';
 import 'package:resume_matching_jd/views/company_detail_view.dart';
 import 'package:resume_matching_jd/views/homepage/homepage_view.dart';
 import 'package:resume_matching_jd/views/job_detail_ai_view.dart';
 import 'package:resume_matching_jd/views/list_company_view.dart';
 import 'package:resume_matching_jd/views/list_job_view.dart';
+import 'package:resume_matching_jd/views/tools/tools_view.dart';
 
 class MyRouter {
   void navigateToHome(BuildContext context) {
@@ -65,6 +67,25 @@ class MyRouter {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => AccountView()),
+    );
+  }
+
+  void navigateToToolsView(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const ToolsView()),
+    );
+  }
+
+  void navigateToWebView(BuildContext context, String title, String url) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => WebViewScreen(
+          title: title,
+          url: url,
+        ),
+      ),
     );
   }
 }
