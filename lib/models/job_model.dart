@@ -13,6 +13,7 @@ class JobModel {
   final String? status;
   final String? benefits;
   final double? match_score;
+  final String? file_path;
 
   JobModel({
     required this.id,
@@ -29,6 +30,7 @@ class JobModel {
     this.status,
     this.benefits,
     this.match_score,
+    this.file_path,
   });
 
   factory JobModel.fromJson(Map<String, dynamic> json) {

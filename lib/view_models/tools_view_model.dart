@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 
 class ToolsViewModel extends ChangeNotifier {
   // URL Constants cho các công cụ
-  static const String mbtiTestUrl = 'https://www.topcv.vn/trac-nghiem-tinh-cach-mbti';
-  static const String miTestUrl = 'https://vn.joboko.com/trac-nghiem-da-tri-thong-minh-mi';
+  static const String mbtiTestUrl =
+      'https://www.topcv.vn/trac-nghiem-tinh-cach-mbti';
+  static const String miTestUrl =
+      'https://vn.joboko.com/trac-nghiem-da-tri-thong-minh-mi';
   static const String grossNetUrl = 'https://www.topcv.vn/tinh-luong-gross-net';
+  static const String createCVUrl = 'https://www.topcv.vn/tao-cv-online';
 
   // Model dữ liệu cho các công cụ
   List<ToolItem> _tools = [
@@ -53,4 +56,3 @@ class ToolItem {
     required this.url,
   });
 }
-

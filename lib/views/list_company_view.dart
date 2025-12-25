@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:resume_matching_jd/components/job_list/job_list.dart';
 import 'package:resume_matching_jd/cores/my_router.dart';
 import 'package:resume_matching_jd/models/company_model.dart';
 import 'package:resume_matching_jd/view_models/list_job_view_model.dart';

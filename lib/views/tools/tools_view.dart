@@ -11,13 +11,13 @@ class ToolsView extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => ToolsViewModel(),
       builder: (context, child) => Scaffold(
-        appBar: AppBar(
-          title: const Text('Công cụ hỗ trợ'),
-          centerTitle: true,
-        ),
+        appBar: AppBar(title: const Text('Công cụ hỗ trợ'), centerTitle: true),
         body: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 16.0,
+              vertical: 12.0,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -43,10 +43,7 @@ class ToolsView extends StatelessWidget {
       children: [
         const Text(
           'Trắc nghiệm',
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-          ),
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 16),
         Column(
@@ -123,10 +120,7 @@ class ToolsView extends StatelessWidget {
           const SizedBox(height: 8),
           Text(
             subtitle,
-            style: const TextStyle(
-              fontSize: 12,
-              color: Colors.white70,
-            ),
+            style: const TextStyle(fontSize: 12, color: Colors.white70),
           ),
           const SizedBox(height: 16),
           SizedBox(
@@ -143,10 +137,7 @@ class ToolsView extends StatelessWidget {
               ),
               child: const Text(
                 'Khám phá ngay',
-                style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 14,
-                ),
+                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14),
               ),
             ),
           ),
@@ -163,10 +154,7 @@ class ToolsView extends StatelessWidget {
       children: [
         const Text(
           'Thêm công cụ - Thêm vượt trội',
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-          ),
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 12),
         ListView.separated(
@@ -180,11 +168,7 @@ class ToolsView extends StatelessWidget {
               icon: tool.icon,
               title: tool.title,
               onTap: () {
-                MyRouter().navigateToWebView(
-                  context,
-                  tool.title,
-                  tool.url,
-                );
+                MyRouter().navigateToWebView(context, tool.title, tool.url);
               },
             );
           },
@@ -213,18 +197,11 @@ class ToolsView extends StatelessWidget {
             color: const Color(0xFF43A047).withOpacity(0.1),
             borderRadius: BorderRadius.circular(8),
           ),
-          child: Icon(
-            icon,
-            color: const Color(0xFF43A047),
-            size: 24,
-          ),
+          child: Icon(icon, color: const Color(0xFF43A047), size: 24),
         ),
         title: Text(
           title,
-          style: const TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w600,
-          ),
+          style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
         ),
         trailing: const Icon(
           Icons.arrow_forward_ios,

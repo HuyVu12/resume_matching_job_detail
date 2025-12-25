@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:resume_matching_jd/cores/my_router.dart';
+import 'package:resume_matching_jd/cores/utils.dart';
 import 'package:resume_matching_jd/views/homepage/components/list_selection_item.dart';
 
 class ListSelection extends StatelessWidget {
@@ -29,12 +30,20 @@ class ListSelection extends StatelessWidget {
           ListSelectionItem(
             iconPath: 'assets/lotties/document_icon.json',
             label: 'Tạo CV',
-            onTap: () {},
+            onTap: () {
+              MyRouter().navigateToWebView(
+                context,
+                'Tạo CV online',
+                "https://timviec365.vn/cv-xin-viec",
+              );
+            },
           ),
           ListSelectionItem(
             iconPath: 'assets/lotties/mark.json',
             label: 'Blog',
-            onTap: () {},
+            onTap: () {
+              showMessage(context, "Chức năng đang được hoàn thiện.");
+            },
           ),
           ListSelectionItem(
             iconPath: 'assets/lotties/tool.json',
