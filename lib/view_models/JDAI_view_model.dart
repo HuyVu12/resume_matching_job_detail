@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:resume_matching_jd/models/job_model.dart';
+import 'package:http/http.dart' as http;
+import 'package:resume_matching_jd/services/server_service.dart';
+import 'dart:convert';
+
+import 'package:resume_matching_jd/view_models/save_view_model.dart';
 
 class JDAIViewModel extends ChangeNotifier {
   PlatformFile? _pickedFile;
@@ -41,12 +46,33 @@ class JDAIViewModel extends ChangeNotifier {
 
     _isAnalyzing = true;
     notifyListeners();
+    try {
+      // var uri = Uri.parse(link_sever_ai + "/analyze-cv");
+      String link_sever = await ServerService().fetchlink() + "/analyze-cv";
+      var uri = Uri.parse(link_sever);
 
-    await Future.delayed(const Duration(seconds: 2));
+      var request = http.MultipartRequest('POST', uri);
 
-    _matchedJobs = [];
+      request.files.add(
+        await http.MultipartFile.fromPath('file', _pickedFile!.path!),
+      );
 
-    _isAnalyzing = false;
-    notifyListeners();
+      var streamedResponse = await request.send();
+      var response = await http.Response.fromStream(streamedResponse);
+
+      if (response.statusCode == 200) {
+        final List<dynamic> jobsJson = json.decode(
+          utf8.decode(response.bodyBytes),
+        );
+        _matchedJobs = jobsJson.map((json) => JobModel.fromJson(json)).toList();
+      } else {
+        print("Lỗi Server: ${response.statusCode}");
+      }
+    } catch (e) {
+      print("Lỗi kết nối: $e");
+    } finally {
+      _isAnalyzing = false;
+      notifyListeners();
+    }
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:provider/provider.dart';
+import 'package:resume_matching_jd/components/job_list/job_list.dart';
 import 'package:resume_matching_jd/view_models/JDAI_view_model.dart';
 import 'package:resume_matching_jd/view_models/save_view_model.dart';
 
@@ -92,6 +93,7 @@ class JobDetailAiView extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 10),
+              JobList(jobs: vm.matchedJobs),
             ],
           ],
         ),
