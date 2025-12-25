@@ -39,7 +39,9 @@ class ListSelection extends StatelessWidget {
           ListSelectionItem(
             iconPath: 'assets/lotties/tool.json',
             label: 'Công cụ',
-            onTap: () {},
+            onTap: () {
+              MyRouter().navigateToToolsView(context);
+            },
           ),
         ],
       ),
