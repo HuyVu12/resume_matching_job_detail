@@ -99,7 +99,7 @@ class JobCard extends StatelessWidget {
             ),
             Text(
               job_detail.match_score != null
-                  ? "${(job_detail.match_score! * 100).toStringAsFixed(1)}%"
+                  ? "${(job_detail.match_score! * 100).toStringAsFixed(2)}%"
                   : "",
               style: TextStyle(
                 color: color_decor,

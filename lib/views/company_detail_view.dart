@@ -76,12 +76,24 @@ class CompanyDetailView extends StatelessWidget {
                     );
                   }
                 },
-                child: const Text(
-                  "Xem trang công ty",
-                  style: TextStyle(
-                    color: Colors.blue,
-                    fontWeight: FontWeight.w500,
-                    decoration: TextDecoration.underline,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 8.0,
+                  ), // Tăng vùng bấm
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Icon(Icons.link, color: Colors.blue, size: 20),
+                      const SizedBox(width: 8),
+                      const Text(
+                        "Website công ty",
+                        style: TextStyle(
+                          color: Colors.blue,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 15,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),

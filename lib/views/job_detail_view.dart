@@ -18,12 +18,12 @@ class JobDetailView extends StatelessWidget {
     final svm = Provider.of<SaveViewModel>(context);
     final jdaivm = Provider.of<JDAIViewModel>(context);
 
-    if (jdaivm.errorMessage != null) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        showMessage(context, jdaivm.errorMessage!, isError: true);
-        jdaivm.clearErrorMessage();
-      });
-    }
+    // if (jdaivm.errorMessage != null) {
+    //   WidgetsBinding.instance.addPostFrameCallback((_) {
+    //     showMessage(context, jdaivm.errorMessage!, isError: true);
+    //     jdaivm.clearErrorMessage();
+    //   });
+    // }
 
     return Scaffold(
       appBar: AppBar(title: Text(job_detail.title)),

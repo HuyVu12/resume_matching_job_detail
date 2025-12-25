@@ -16,7 +16,7 @@ Widget _buildSectionHeader(
         const SizedBox(width: 8),
         Text(
           title,
-          maxLines: 3,
+          textAlign: TextAlign.justify,
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
@@ -34,7 +34,7 @@ Widget PART_AI_1(
   void Function()? onPressed,
 ) {
   final String scoreDisplay = job_detail.match_score != null
-      ? "${(job_detail.match_score! * 100).toStringAsFixed(1)}%"
+      ? "${(job_detail.match_score! * 100).toStringAsFixed(2)}%"
       : "";
 
   final color_decor = job_detail.match_score == null
@@ -193,6 +193,7 @@ class Utils {
                             ),
                             Text(
                               general,
+                              // textAlign: TextAlign.justify,
                               style: const TextStyle(
                                 fontSize: 16,
                                 height: 1.5,
