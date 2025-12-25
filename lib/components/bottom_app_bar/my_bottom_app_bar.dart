@@ -37,7 +37,9 @@ class MyBottomAppBar extends StatelessWidget {
           MyBottomAppBarItem(
             iconPath: "assets/lotties/user_icon.json",
             label: "Account",
-            onTap: () {},
+            onTap: () {
+              MyRouter().navigateToAccountView(context);
+            },
           ),
         ],
       ),

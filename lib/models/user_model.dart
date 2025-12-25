@@ -1,6 +1,7 @@
 class UserModel {
   final int id;
   final String? username;
+  final String? email;
   final String? password;
   final String? avatar_url;
   final String? role;
@@ -9,6 +10,7 @@ class UserModel {
   UserModel({
     this.id = 0,
     this.username,
+    this.email,
     this.password,
     this.avatar_url,
     this.role,
@@ -19,6 +21,7 @@ class UserModel {
     return UserModel(
       id: json['id'],
       username: json['username'],
+      email: json['email'],
       password: json['password'],
       avatar_url: json['avatar_url'],
       role: json['role'],

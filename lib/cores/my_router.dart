@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:resume_matching_jd/models/company_model.dart';
-import 'package:resume_matching_jd/view_models/home_view_model.dart';
+import 'package:resume_matching_jd/views/account_view.dart';
 import 'package:resume_matching_jd/views/auth/login_view.dart';
 import 'package:resume_matching_jd/views/auth/register_view.dart';
 import 'package:resume_matching_jd/views/company_detail_view.dart';
@@ -59,6 +58,13 @@ class MyRouter {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => JobDetailAiView()),
+    );
+  }
+
+  void navigateToAccountView(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => AccountView()),
     );
   }
 }
