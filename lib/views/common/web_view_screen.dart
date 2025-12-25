@@ -61,7 +61,7 @@ class _WebViewScreenState extends State<WebViewScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
-        backgroundColor: const Color(0xFF8A8CFF),
+        backgroundColor: const Color(0xFF43A047), 
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
@@ -76,7 +76,7 @@ class _WebViewScreenState extends State<WebViewScreen> {
               color: Colors.white.withOpacity(0.7),
               child: const Center(
                 child: CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF8A8CFF)),
+                  valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF43A047)),
                 ),
               ),
             ),

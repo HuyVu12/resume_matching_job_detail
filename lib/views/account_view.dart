@@ -41,7 +41,7 @@ class _AccountViewState extends State<AccountView> {
             if (viewModel.isLoading) {
               return const Center(
                 child: CircularProgressIndicator(
-                  color: Color(0xFF8A8CFF),
+                  color: Color(0xFF43A047),
                 ),
               );
             }
@@ -71,7 +71,7 @@ class _AccountViewState extends State<AccountView> {
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(
-                            color: const Color(0xFF8A8CFF),
+                            color: const Color(0xFF43A047),
                             width: 3,
                           ),
                           image: user.avatar_url != null &&
@@ -87,7 +87,7 @@ class _AccountViewState extends State<AccountView> {
                             ? const Icon(
                                 Icons.person,
                                 size: 60,
-                                color: Color(0xFF8A8CFF),
+                                color: const Color(0xFF43A047),
                               )
                             : null,
                       ),
@@ -139,7 +139,7 @@ class _AccountViewState extends State<AccountView> {
                           _showLogoutDialog(context, viewModel);
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xFF8A8CFF),
+                          backgroundColor: const Color(0xFF43A047),
                           padding: const EdgeInsets.symmetric(vertical: 14),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
@@ -182,7 +182,7 @@ class _AccountViewState extends State<AccountView> {
         children: [
           Icon(
             icon,
-            color: const Color(0xFF8A8CFF),
+            color: const Color(0xFF43A047),
             size: 24,
           ),
           const SizedBox(width: 16),

@@ -94,8 +94,8 @@ class ToolsView extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            const Color(0xFF8A8CFF),
-            const Color(0xFF8A8CFF).withOpacity(0.85),
+            const Color(0xFF43A047),
+            const Color(0xFF43A047).withOpacity(0.85),
           ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
@@ -103,7 +103,7 @@ class ToolsView extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFF8A8CFF).withOpacity(0.2),
+            color: const Color(0xFF43A047).withOpacity(0.2),
             blurRadius: 8,
             offset: const Offset(0, 4),
           ),
@@ -136,7 +136,7 @@ class ToolsView extends StatelessWidget {
               onPressed: onTap,
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.white,
-                foregroundColor: const Color(0xFF8A8CFF),
+                foregroundColor: const Color(0xFF43A047),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),
@@ -210,12 +210,12 @@ class ToolsView extends StatelessWidget {
           width: 44,
           height: 44,
           decoration: BoxDecoration(
-            color: const Color(0xFF8A8CFF).withOpacity(0.1),
+            color: const Color(0xFF43A047).withOpacity(0.1),
             borderRadius: BorderRadius.circular(8),
           ),
           child: Icon(
             icon,
-            color: const Color(0xFF8A8CFF),
+            color: const Color(0xFF43A047),
             size: 24,
           ),
         ),

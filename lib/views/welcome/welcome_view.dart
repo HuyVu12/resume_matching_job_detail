@@ -33,6 +33,9 @@ class WelcomeView extends StatelessWidget {
                               padding: WidgetStateProperty.all(
                                 EdgeInsets.symmetric(vertical: 15),
                               ),
+                              backgroundColor: WidgetStateProperty.all(
+                                Color(0xFF43A047),
+                              ),
                             ),
                             child: Text(
                               "Đăng nhập",
@@ -50,10 +53,16 @@ class WelcomeView extends StatelessWidget {
                               padding: WidgetStateProperty.all(
                                 EdgeInsets.symmetric(vertical: 15),
                               ),
+                              side: WidgetStateProperty.all(
+                                BorderSide(
+                                  color: Color(0xFF43A047),
+                                  width: 2,
+                                ),
+                              ),
                             ),
                             child: Text(
                               "Đăng ký",
-                              style: TextStyle(fontSize: 16),
+                              style: TextStyle(fontSize: 16, color: Color(0xFF43A047)),
                             ),
                           ),
                         ),

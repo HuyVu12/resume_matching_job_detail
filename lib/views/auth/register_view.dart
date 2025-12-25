@@ -51,9 +51,9 @@ class _RegisterViewState extends State<RegisterView> {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             colors: [
-               Color(0xFF5E60C0), // Tím đậm (Deep Periwinkle) - thay cho Xanh lá đậm
-                Color(0xFF8A8CFF), // Tím trung tính (màu chính trong ảnh) - thay cho Xanh lá trung tính
-                Color(0xFFC5C7FF), // Tím lavender nhạt - thay cho Xanh bạc hà nhạt
+              Color(0xFF2E7D32), // Xanh lá đậm (Forest Green)
+              Color(0xFF43A047), // Xanh lá trung tính
+              Color(0xFFA5D6A7), // Xanh bạc hà nhạt (Mint)
             ],
           ),
         ),
@@ -184,7 +184,7 @@ class _RegisterViewState extends State<RegisterView> {
                           child: ElevatedButton(
                             onPressed: _handleRegister,
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Color(0xFF8A8CFF),
+                              backgroundColor: Color(0xFF43A047), 
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15),
                               ),
@@ -220,7 +220,7 @@ class _RegisterViewState extends State<RegisterView> {
                                 "Đăng nhập",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  color: Color(0xFF8A8CFF),
+                                  color: Color(0xFF43A047), 
                                 ),
                               ),
                             ),
