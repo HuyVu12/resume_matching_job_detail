@@ -9,6 +9,13 @@ class JobCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var color_decor = job_detail.match_score == null
+        ? Colors.green.shade300
+        : job_detail.match_score! > 0.7
+        ? Colors.green.shade500
+        : job_detail.match_score! > 0.5
+        ? Colors.orange.shade400
+        : Colors.red.shade400;
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -22,7 +29,10 @@ class JobCard extends StatelessWidget {
         margin: const EdgeInsets.only(bottom: 12),
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
-          border: Border.all(color: Colors.green.shade300),
+          border: Border.all(
+            width: job_detail.match_score == null ? 1 : 2,
+            color: color_decor,
+          ),
           borderRadius: BorderRadius.circular(12),
         ),
         child: Row(
@@ -85,6 +95,16 @@ class JobCard extends StatelessWidget {
                     ),
                   ),
                 ],
+              ),
+            ),
+            Text(
+              job_detail.match_score != null
+                  ? "${(job_detail.match_score! * 100).toStringAsFixed(1)}%"
+                  : "",
+              style: TextStyle(
+                color: color_decor,
+                fontWeight: FontWeight.bold,
+                fontSize: 14,
               ),
             ),
           ],

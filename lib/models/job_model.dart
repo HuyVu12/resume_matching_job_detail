@@ -12,6 +12,7 @@ class JobModel {
   final double? salaryMax;
   final String? status;
   final String? benefits;
+  final double? match_score;
 
   JobModel({
     required this.id,
@@ -27,6 +28,7 @@ class JobModel {
     this.salaryMax,
     this.status,
     this.benefits,
+    this.match_score,
   });
 
   factory JobModel.fromJson(Map<String, dynamic> json) {
@@ -44,6 +46,7 @@ class JobModel {
       salaryMax: json['salary_max']?.toDouble(),
       status: json['status'],
       benefits: json['benefits'],
+      match_score: json['match_score']?.toDouble(),
     );
   }
 }
