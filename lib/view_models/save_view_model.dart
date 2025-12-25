@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:resume_matching_jd/models/company_model.dart';
 import 'package:resume_matching_jd/models/job.dart';
 import 'package:resume_matching_jd/models/job_model.dart';
+import 'package:resume_matching_jd/models/user_model.dart';
 import 'package:resume_matching_jd/services/company_service.dart';
 import 'package:resume_matching_jd/services/job_service.dart';
+import 'package:resume_matching_jd/services/server_service.dart';
+
+UserModel current_user = UserModel();
+String link_sever_ai = "";
 
 class SaveViewModel extends ChangeNotifier {
   List<CompanyModel> _Companies = [];
@@ -18,6 +23,7 @@ class SaveViewModel extends ChangeNotifier {
   Future<void> load_data() async {
     _Companies = await CompanyService().fetchCompanies();
     _Jobs = await JobService().fetchJobs();
+    link_sever_ai = await ServerService().fetchlink();
     notifyListeners();
   }
 

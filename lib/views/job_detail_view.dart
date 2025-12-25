@@ -73,7 +73,7 @@ class JobDetailView extends StatelessWidget {
                   }
                 },
                 child: const Text(
-                  "Xem trang công ty",
+                  "Website công ty",
                   style: TextStyle(
                     color: Colors.blue,
                     fontWeight: FontWeight.w500,
@@ -146,8 +146,15 @@ class JobDetailView extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(10.0),
+        padding: const EdgeInsets.fromLTRB(10, 5, 10, 10),
         child: FilledButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.green,
+            padding: const EdgeInsets.symmetric(vertical: 15),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
           onPressed: () {},
           child: const Text("Ứng tuyển ngay"),
         ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:resume_matching_jd/cores/my_router.dart';
+import 'package:resume_matching_jd/cores/utils.dart';
+import 'package:resume_matching_jd/services/auth_service.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
@@ -20,10 +22,23 @@ class _RegisterViewState extends State<RegisterView> {
       'candidate'; // Mặc định là ứng viên (candidate hoặc recruiter)
 
   void _handleRegister() {
-    print("Username: ${_usernameController.text}");
-    print("Email: ${_emailController.text}");
-    print("Phone: ${_phoneController.text}");
-    print("Role: $_selectedRole");
+    AuthService()
+        .signUp(
+          email: _emailController.text.trim(),
+          password: _passwordController.text.trim(),
+          username: _usernameController.text.trim(),
+          phone: _phoneController.text.trim(),
+          role: _selectedRole,
+        )
+        .then((_) {
+          showMessage(context, "Đăng ký thành công! Vui lòng đăng nhập.");
+          MyRouter().navigateToLoginView(context);
+        })
+        .catchError((error) {
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text('Lỗi đăng ký: $error')));
+        });
   }
 
   @override
@@ -36,9 +51,9 @@ class _RegisterViewState extends State<RegisterView> {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             colors: [
-              Color(0xFF2E7D32), // Xanh lá đậm (Forest Green)
-              Color(0xFF43A047), // Xanh lá trung tính
-              Color(0xFFA5D6A7), // Xanh bạc hà nhạt (Mint)
+               Color(0xFF5E60C0), // Tím đậm (Deep Periwinkle) - thay cho Xanh lá đậm
+                Color(0xFF8A8CFF), // Tím trung tính (màu chính trong ảnh) - thay cho Xanh lá trung tính
+                Color(0xFFC5C7FF), // Tím lavender nhạt - thay cho Xanh bạc hà nhạt
             ],
           ),
         ),
@@ -130,8 +145,8 @@ class _RegisterViewState extends State<RegisterView> {
                                 icon: Icons.person_outline,
                               ),
                               _buildTextField(
-                                controller: _fullnameController,
-                                hint: "Tên đăng nhập",
+                                controller: _usernameController,
+                                hint: "Tên tài khoản",
                                 icon: Icons.account_circle_outlined,
                               ),
                               _buildDivider(),
@@ -144,7 +159,7 @@ class _RegisterViewState extends State<RegisterView> {
                               _buildDivider(),
                               _buildTextField(
                                 controller: _emailController,
-                                hint: "Email",
+                                hint: "Địa chỉ Email",
                                 icon: Icons.email_outlined,
                                 inputType: TextInputType.emailAddress,
                               ),
@@ -169,7 +184,7 @@ class _RegisterViewState extends State<RegisterView> {
                           child: ElevatedButton(
                             onPressed: _handleRegister,
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.lightGreen[800],
+                              backgroundColor: Color(0xFF8A8CFF),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15),
                               ),
@@ -205,7 +220,7 @@ class _RegisterViewState extends State<RegisterView> {
                                 "Đăng nhập",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.green,
+                                  color: Color(0xFF8A8CFF),
                                 ),
                               ),
                             ),

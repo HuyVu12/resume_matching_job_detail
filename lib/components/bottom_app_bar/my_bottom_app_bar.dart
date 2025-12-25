@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:resume_matching_jd/components/bottom_app_bar/my_bottom_app_bar_item.dart';
+import 'package:resume_matching_jd/cores/my_router.dart';
 
 class MyBottomAppBar extends StatelessWidget {
   const MyBottomAppBar({super.key});
@@ -24,7 +25,9 @@ class MyBottomAppBar extends StatelessWidget {
           MyBottomAppBarItem(
             iconPath: "assets/lotties/demand_icon.json",
             label: "JD AI",
-            onTap: () {},
+            onTap: () {
+              MyRouter().navigateToJobDetailAiView(context);
+            },
           ),
           MyBottomAppBarItem(
             iconPath: "assets/lotties/notification_icon.json",
@@ -34,7 +37,9 @@ class MyBottomAppBar extends StatelessWidget {
           MyBottomAppBarItem(
             iconPath: "assets/lotties/user_icon.json",
             label: "Account",
-            onTap: () {},
+            onTap: () {
+              MyRouter().navigateToAccountView(context);
+            },
           ),
         ],
       ),
