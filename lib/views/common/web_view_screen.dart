@@ -5,11 +5,7 @@ class WebViewScreen extends StatefulWidget {
   final String title;
   final String url;
 
-  const WebViewScreen({
-    super.key,
-    required this.title,
-    required this.url,
-  });
+  const WebViewScreen({super.key, required this.title, required this.url});
 
   @override
   State<WebViewScreen> createState() => _WebViewScreenState();
@@ -61,7 +57,6 @@ class _WebViewScreenState extends State<WebViewScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
-        backgroundColor: const Color(0xFF43A047), 
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),

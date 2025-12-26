@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:resume_matching_jd/components/bottom_app_bar/my_bottom_app_bar_item.dart';
 import 'package:resume_matching_jd/cores/my_router.dart';
+import 'package:resume_matching_jd/cores/utils.dart';
 
 class MyBottomAppBar extends StatelessWidget {
   const MyBottomAppBar({super.key});
@@ -20,7 +21,13 @@ class MyBottomAppBar extends StatelessWidget {
           MyBottomAppBarItem(
             iconPath: "assets/lotties/document_icon.json",
             label: "Tạo CV",
-            onTap: () {},
+            onTap: () {
+              MyRouter().navigateToWebView(
+                context,
+                'Tạo CV online',
+                "https://timviec365.vn/cv-xin-viec",
+              );
+            },
           ),
           MyBottomAppBarItem(
             iconPath: "assets/lotties/demand_icon.json",

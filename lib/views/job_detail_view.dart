@@ -1,3 +1,5 @@
+import 'package:resume_matching_jd/cores/utils.dart';
+import 'package:resume_matching_jd/view_models/JDAI_view_model.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -14,6 +16,15 @@ class JobDetailView extends StatelessWidget {
   Widget build(BuildContext context) {
     final vm = Provider.of<JobDetailViewModel>(context);
     final svm = Provider.of<SaveViewModel>(context);
+    final jdaivm = Provider.of<JDAIViewModel>(context);
+
+    // if (jdaivm.errorMessage != null) {
+    //   WidgetsBinding.instance.addPostFrameCallback((_) {
+    //     showMessage(context, jdaivm.errorMessage!, isError: true);
+    //     jdaivm.clearErrorMessage();
+    //   });
+    // }
+
     return Scaffold(
       appBar: AppBar(title: Text(job_detail.title)),
       body: SingleChildScrollView(
@@ -58,6 +69,7 @@ class JobDetailView extends StatelessWidget {
                 svm.get_company(job_detail.company_id).description,
                 style: const TextStyle(fontSize: 16),
               ),
+
               InkWell(
                 onTap: () async {
                   final String? urlString = svm
@@ -68,20 +80,39 @@ class JobDetailView extends StatelessWidget {
                     await launchUrl(Uri.parse(urlString));
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Không thể mở trang web')),
+                      const SnackBar(content: Text('Không thể mở trang web')),
                     );
                   }
                 },
-                child: const Text(
-                  "Website công ty",
-                  style: TextStyle(
-                    color: Colors.blue,
-                    fontWeight: FontWeight.w500,
-                    decoration: TextDecoration.underline,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 8.0,
+                  ), // Tăng vùng bấm
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Icon(Icons.link, color: Colors.blue, size: 20),
+                      const SizedBox(width: 8),
+                      const Text(
+                        "Website công ty",
+                        style: TextStyle(
+                          color: Colors.blue,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 15,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
+
               Divider(),
+              if (job_detail.match_score != null) ...[
+                PART_AI_1(job_detail, job_detail.match_score!, () {
+                  Utils.showAnalysisBottomSheet(context, jdaivm, job_detail);
+                }),
+                const SizedBox(height: 15),
+              ],
 
               Text(
                 job_detail.title,
@@ -96,15 +127,15 @@ class JobDetailView extends StatelessWidget {
               ),
               Row(
                 children: [
-                  _tag(
+                  utils_tag(
                     job_detail.salaryMin != null && job_detail.salaryMax != null
                         ? "${job_detail.salaryMin! / 1000000} - ${job_detail.salaryMax! / 1000000} triệu VND"
                         : "Thương lượng",
                   ),
                   const SizedBox(width: 6),
-                  _tag(job_detail.location ?? "Không xác định"),
+                  utils_tag(job_detail.location ?? "Không xác định"),
                   const SizedBox(width: 6),
-                  _tag(job_detail.job_type ?? "Không xác định"),
+                  utils_tag(job_detail.job_type ?? "Không xác định"),
                 ],
               ),
               Divider(),
@@ -155,19 +186,12 @@ class JobDetailView extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
             ),
           ),
-          onPressed: () {},
+          onPressed: () {
+            showMessage(context, "Chức năng đang được hoàn thiện.");
+          },
           child: const Text("Ứng tuyển ngay"),
         ),
       ),
     );
   }
 }
-
-Widget _tag(String text) => Container(
-  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-  decoration: BoxDecoration(
-    color: Colors.grey.shade200,
-    borderRadius: BorderRadius.circular(20),
-  ),
-  child: Text(text, style: const TextStyle(fontSize: 12)),
-);
